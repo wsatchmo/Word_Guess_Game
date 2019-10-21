@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<input id="startGame" type="button" value="Start Game" onclick="playGame();">
+
+    <!--MAKE A WAY TO VISUALIZE THE WORDS WITH NO LETTERS-->
+
+<p>Guessed Letters:</p>
+<p id="output1"></p>
+<br>
+<p>Guesses Remaining:</p>
+<p id="output2"></p>
+<br>
+<p>HANGMAN:</p>
+<p id="hangmanLetters"></p>
+
+
+    <script type="text/javascript">
+        var wins = 0;
+        var losses = 0;
+        //create a score counter
+        var wordArr = ["britain", "fluffy", "drink", "italian", "monkey", "africa", "america", "puppy", "cheese", "tacos", "duck"];
+        //make an array of a ton of words
+
+        function playGame(){
+            var guesses = 7;
+            //create a guesses counter
+            //Make a function that starts the game every time you hit start
+            var currentWord = wordArr[Math.floor(Math.random() * wordArr.length)]; // the word to be guessed
+            //choose a word at random
+            var currentArr = currentWord.split("");  //an array of all the letters in the word to be guessed
+            //make an empty array that splits that word
+            var blankWord = [];  // a blank array to be filled in with spaces, then updated with letters used
+                for (j = 0; j < currentArr.length; j++){
+                    blankWord.push("_"); //display each letter as a space: _____
+                }
+            //make a way to update the visualizer the word with no letters
+            
+            var guessedLetters = []; // an array of all the letters the player hs guessed, whetehr right or wrong
+            //make a way for players to enter letters
+            document.onkeyup = function(event) {
+                //store which key was pressed by the user
+                var userChoice = event.key;
+                guessedLetters.push(userChoice);
+
+                for (i = 0; i < currentArr.length; i++){
+                    if (userChoice === currentArr[i]){
+                    //if the chosen letter matches one of the letters in the word --
+                        blankWord[i] = userChoice;
+                        //display that letter in the vizualization of the word
+                        
+                        
+                    } else {
+                    //otherwise
+                        
+                    }
+                  
+                    //add it to the list of letters used??
+                }
+                
+                guesses -= 1;
+
+                document.getElementById('output1').innerHTML = guessedLetters;
+                document.getElementById('output2').innerHTML = guesses;
+                document.getElementById('hangmanLetters').innerHTML = blankWord;
+
+                if (blankWord == currentArr){
+                    wins++;
+                }
+                //if all letters have been guessed
+                    //display a win, add it to score counter
+                if (guesses === 0 && (blankWord != currentArr)){
+                    losses++;
+                }
+                //if guesses counter is zero and all letters haven't been guessed
+                    //display a loss, add it to loss counter
+            }
+        }
+
+
+    </script>
+</body>
+</html>
