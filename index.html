@@ -45,7 +45,7 @@
                     blankWord.push("_"); //display each letter as a space: _____
                 }
             
-            var guessedLetters = []; // an array of all the letters the player hs guessed, whetehr right or wrong
+            var guessedLetters = []; // an array of all the letters the player has guessed, whetehr right or wrong
 
             document.onkeyup = function(event) {
                 //store which key was pressed by the user
@@ -58,6 +58,8 @@
                         blankWord[i] = userChoice;
                         //display that letter in the vizualization of the word
                     }
+
+                    
                 }
                 
                 if (currentArr.indexOf(userChoice) === -1){
@@ -65,20 +67,36 @@
                 }
                 //If the letter is not in the word, decrement guesses
 
-                if (blankWord == currentWord){
+                var winsBool;
+
+                for (j = 0; j < blankWord.length; j++){
+                    if (blankWord[j] === currentArr[j]){
+                        winsBool = true;
+                    } else {
+                        winsBool = false;
+                        break;
+                    }
+                }
+
+                if (winsBool){
                     wins++;
+                    playGame();
+                    alert("Round won!");
                 }
                 //if all letters have been guessed
                     //display a win, add it to score counter
-                if (guesses === 0 && (blankWord != currentWord)){
+
+                if (guesses === 0 && (!winsBool)){
                     losses++;
+                    playGame();
+                    alert("Round lost!");
                 }
                 //if guesses counter is zero and all letters haven't been guessed
                     //display a loss, add it to loss counter
 
                 document.getElementById('output1').innerHTML = guessedLetters;
                 document.getElementById('output2').innerHTML = guesses;
-                document.getElementById('hangmanLetters').innerHTML = blankWord;
+                document.getElementById('hangmanLetters').innerHTML = blankWord.toString().replace(/,/g , "");
                 document.getElementById('wins-count').innerHTML = wins;
                 document.getElementById('losses-count').innerHTML = losses;
             }
