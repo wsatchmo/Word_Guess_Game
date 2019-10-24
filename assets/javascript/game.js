@@ -63,9 +63,9 @@ function playGame(){
         //if guesses counter is zero and all letters haven't been guessed
             //display a loss, add it to loss counter
 
-        document.getElementById('output1').innerHTML = guessedLetters;
+        document.getElementById('output1').innerHTML = guessedLetters.toString().replace(/,/g , " ");
         document.getElementById('output2').innerHTML = guesses;
-        document.getElementById('hangmanLetters').innerHTML = blankWord.toString().replace(/,/g , "");
+        document.getElementById('hangmanLetters').innerHTML = blankWord.toString().replace(/,/g , " ");
         document.getElementById('wins-count').innerHTML = wins;
         document.getElementById('losses-count').innerHTML = losses;
     }

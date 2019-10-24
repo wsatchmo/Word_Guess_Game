@@ -5,29 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
 </head>
 
 <body>
-<input id="startGame" type="button" value="Start Game" onclick="playGame();">
+    <input id="startGame" type="button" value="Start Game" onclick="playGame();">
 
-    <!--MAKE A WAY TO VISUALIZE THE WORDS WITH NO LETTERS-->
+    <p>Guessed Letters:</p>
+    <p id="output1"> </p>
+    <br>
+    <p>Guesses Remaining:</p>
+    <p id="output2"> </p>
+    <br>
+    <p>HANGMAN:</p>
+    <p id="hangmanLetters"> </p>
+    <p>Wins:</p>
+    <p id="wins-count"></p>
+    <p>Losses:</p>
+    <p id="losses-count"> </p>
 
-<p>Guessed Letters:</p>
-<p id="output1"> </p>
-<br>
-<p>Guesses Remaining:</p>
-<p id="output2"> </p>
-<br>
-<p>HANGMAN:</p>
-<p id="hangmanLetters"> </p>
-<p>Wins:</p>
-<p id="wins-count"></p>
-<p>Losses:</p>
-<p id="losses-count"> </p>
+    <!--TRY TO MAKE IT SO THESE EXIST BEFOREHAND; 
+    PROBABLY A CSS THING. STYLE!!!!-->
 
-
-
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
