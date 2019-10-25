@@ -13,16 +13,19 @@
     
     <div class="game-box">
         <div class="button-div">
-            <input id="startGame" type="button" value="Start Game" onclick="playGame();">
+            <audio id="theme" src="assets/music/Fallout 4 Theme 8 Bit - Famitracker.mp3"></audio>
+            <input id="startGame" type="button" value="Start Game" onclick="playGame();clearScore();">
+            <input id="music" type="button"  value="Toggle Music" onclick="toggleMusic();">
+            
         </div>
         <div class="game-text">
             <div class="guess-text">
                 <p>Guessed Letters:</p>
-                <p id="output1"> = = = = = = = </p>
+                <p id="output1"> </p>
                 <br>
                 <p>Guesses Remaining:</p>
                 <p id="output2"> = = = = = = = </p>
-                <p>Round Status:</p>
+                <p>Player Status:</p>
                 <p id="round-status"> </p>
             </div>
             <div class="hangman-text">
@@ -32,12 +35,11 @@
                 <p id="wins-count"> 0 </p>
                 <p>Losses:</p>
                 <p id="losses-count"> 0 </p>
+                <p id="pressanykey"></p>
             </div>
         </div>
     </div>
-    <!--TRY TO MAKE IT SO THESE EXIST BEFOREHAND; 
-    PROBABLY A CSS THING. STYLE!!!!-->
-
+ 
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>

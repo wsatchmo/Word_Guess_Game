@@ -1,12 +1,39 @@
+/* 
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/                       
+*/
+function toggleMusic(){ //the music player
+        if (document.getElementById('theme').paused == false)
+            document.getElementById('theme').pause(); //if it is not paused, pause it when pressed
+        else
+            document.getElementById('theme').play(); //otherwise, play it
+                 }
+// FALLOUT 4 CHIPTUNE SONG!!!
+
 var wins = 0;
 var losses = 0;
 //create a score counter
-var wordArr = ["britain", "horse", "chuckle", "fluffy", "drink", "italian", "monkey", "africa", "america", "puppy", "cheese", "tacos", "duck", "donkey", "wrench", "boxer"];
+var wordArr = ["britain", "raider", "psycho", "vault", "horse", "chuckle", "fluffy", "drink", "italian", "monkey", "china", "america", "puppy", "cheese", "tacos", "duck", "donkey", "wrench", "boxer", "russia"];
 //make an array of a ton of words
+
+function clearScore(){
+    wins = 0;
+    losses = 0;
+}
 
 function playGame(){
 
-    document.getElementById('round-status').innerHTML = "Playing . . .";
+    document.getElementById('output1').innerHTML = "";
+    document.getElementById('output2').innerHTML = "";
+    document.getElementById('hangmanLetters').innerHTML = "= = = = = = =";
+    document.getElementById('round-status').innerHTML = "No Score . . .";
+    //reset everything when a player hits start game button
 
     var currentWord = wordArr[Math.floor(Math.random() * wordArr.length)]; // the word to be guessed
     //choose a word at random
@@ -24,24 +51,23 @@ function playGame(){
     document.onkeyup = function(event) {
         //store which key was pressed by the user
         var userChoice = event.key;
-        guessedLetters.push(userChoice);
+        guessedLetters.push(userChoice.toLowerCase());
 
         var possibilitiesArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-        
+        //an array of all possible guesses
         if (possibilitiesArr.includes(userChoice.toLowerCase())) {
-            
+        //if the guess isn't in the array, don't even count it -- considers uppercase to be lowercase
             for (i = 0; i < currentArr.length; i++){
-                if (userChoice === currentArr[i]){
+                if (userChoice.toLowerCase() === currentArr[i]){
                 //if the chosen letter matches one of the letters in the word --
-                    blankWord[i] = userChoice;
+                    blankWord[i] = userChoice.toLowerCase();
                     //display that letter in the vizualization of the word
                 }   
             }
-            
-            if (currentArr.indexOf(userChoice) === -1){
+            if (currentArr.indexOf(userChoice.toLowerCase()) === -1){
             guesses -= 1;
             }
-            //If the letter is not in the word, decrement guesses
+            //if the letter is not in the word, decrement guesses
 
             var winsBool;
 
@@ -57,7 +83,13 @@ function playGame(){
             if (winsBool){
                 wins++;
                 playGame();
-                document.getElementById('round-status').innerHTML = "Round Won";
+                if (losses > wins){
+                    document.getElementById('round-status').innerHTML = "Currently losing";
+                } else if (losses === wins){
+                    document.getElementById('round-status').innerHTML = "Currently tied";
+                } else {
+                    document.getElementById('round-status').innerHTML = "Currently winning";
+                }
             }
             //if all letters have been guessed
                 //display a win, add it to score counter
@@ -65,11 +97,25 @@ function playGame(){
             if (guesses === 0 && (!winsBool)){
                 losses++;
                 playGame();
-                document.getElementById('round-status').innerHTML = "Round Lost";
+                if (losses > wins){
+                    document.getElementById('round-status').innerHTML = "Currently losing";
+                } else if (losses === wins){
+                    document.getElementById('round-status').innerHTML = "Currently tied";
+                } else {
+                    document.getElementById('round-status').innerHTML = "Currently winning";
+                }
             }
         //if guesses counter is zero and all letters haven't been guessed
             //display a loss, add it to loss counter
+            
         }
+
+        if (guesses === 0 || winsBool){
+           document.getElementById('pressanykey').innerHTML = "Press any key to begin again"; 
+        } else {
+            document.getElementById('pressanykey').innerHTML = "";
+        }
+        
 
         document.getElementById('output1').innerHTML = guessedLetters.toString().replace(/,/g , " ");
         document.getElementById('output2').innerHTML = guesses;
