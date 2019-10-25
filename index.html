@@ -9,21 +9,32 @@
 </head>
 
 <body>
-    <input id="startGame" type="button" value="Start Game" onclick="playGame();">
-
-    <p>Guessed Letters:</p>
-    <p id="output1"> </p>
-    <br>
-    <p>Guesses Remaining:</p>
-    <p id="output2"> </p>
-    <br>
-    <p>HANGMAN:</p>
-    <p id="hangmanLetters"> </p>
-    <p>Wins:</p>
-    <p id="wins-count"></p>
-    <p>Losses:</p>
-    <p id="losses-count"> </p>
-
+    
+    
+    <div class="game-box">
+        <div class="button-div">
+            <input id="startGame" type="button" value="Start Game" onclick="playGame();">
+        </div>
+        <div class="game-text">
+            <div class="guess-text">
+                <p>Guessed Letters:</p>
+                <p id="output1"> = = = = = = = </p>
+                <br>
+                <p>Guesses Remaining:</p>
+                <p id="output2"> = = = = = = = </p>
+                <p>Round Status:</p>
+                <p id="round-status"> </p>
+            </div>
+            <div class="hangman-text">
+                <p>HANGMAN:</p>
+                <p id="hangmanLetters"> = = = = = = = </p>
+                <p>Wins:</p>
+                <p id="wins-count"> 0 </p>
+                <p>Losses:</p>
+                <p id="losses-count"> 0 </p>
+            </div>
+        </div>
+    </div>
     <!--TRY TO MAKE IT SO THESE EXIST BEFOREHAND; 
     PROBABLY A CSS THING. STYLE!!!!-->
 

@@ -1,3 +1,49 @@
 body{
-    background-color: brown;
+    background-image: url(../images/terminal-monitor.jpeg);
+    background-size: 100%;
+    background-repeat: repeat;
+}
+
+p{
+    color: rgb(3, 184, 3);
+    font-family: monospace;
+    font-size: 20px;
+}
+
+.game-box{
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+  .game-box {
+    margin-left: 10%;
+  }
+}
+
+#startGame{
+    font-family: monospace;
+    background-color: rgb(3, 184, 3);
+    color: black;
+    font-size: 20px;
+    border-color: rgb(3, 184, 3) rgb(3, 184, 3) rgb(9, 100, 9) rgb(33, 95, 33);
+    margin: 30px;
+    margin-left: 20%;
+}
+
+#startGame:hover {
+  background-color: rgb(40, 102, 42); /* Green */
+  color: white;
+}
+
+.guess-text{
+    float: left;
+    padding: 30px;
+    width: 25%;
+}
+
+.hangman-text{
+    float: left;
+    padding: 30px;
+    margin-left: 5%;
 }
