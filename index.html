@@ -9,21 +9,18 @@
 </head>
 
 <body>
-    
-    
     <div class="game-box">
         <div class="button-div">
-            <audio id="theme" src="assets/music/Fallout 4 Theme 8 Bit - Famitracker.mp3"></audio>
-            <input id="startGame" type="button" value="New Game" onclick="playGame();clearScore();">
-            <input id="music" type="button"  value="Play/Pause Music" onclick="toggleMusic();">
-            
+            <audio id="theme" src="assets/music/Fallout 4 Theme 8 Bit - Famitracker.mp3"></audio> <!--MUSIC-->
+            <input id="start-game" type="button" value="New Game" onclick="playGame();clearScore();">
+            <input id="music" type="button"  value="Play/Pause Music" onclick="toggleMusic();">  
         </div>
         <div class="game-text">
             <div class="guess-text">
                 <p>Guessed Letters:</p>
                 <p id="output1"> </p>
                 <br>
-                <p>Guesses Remaining:</p>
+                <p id="guess-remaining">Guesses Remaining:</p>
                 <p id="output2"> = = = = = =</p>
                 <p>Player Status:</p>
                 <p id="round-status"> </p>
@@ -39,7 +36,6 @@
             </div>
         </div>
     </div>
- 
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>

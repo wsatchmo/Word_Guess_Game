@@ -35,8 +35,8 @@ function clearScore(){
 function playGame(){
 
     document.getElementById('output1').innerHTML = "";
-    document.getElementById('output2').innerHTML = "";
-    document.getElementById('hangmanLetters').innerHTML = "= = = = = = =";
+    document.getElementById('output2').innerHTML = "- - - - - -";
+    document.getElementById('hangmanLetters').innerHTML = "- - - - - -";
     document.getElementById('round-status').innerHTML = "No Score . . .";
     //reset everything when a player hits start game button
 
@@ -56,21 +56,22 @@ function playGame(){
     document.onkeyup = function(event) {
         //store which key was pressed by the user
         var userChoice = event.key;
-        guessedLetters.push(userChoice.toLowerCase());
+        var userLower = userChoice.toLowerCase();
+        guessedLetters.push(userLower);
 
         var possibilitiesArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", 
                                 "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         //an array of all possible guesses
-        if (possibilitiesArr.includes(userChoice.toLowerCase())) {
+        if (possibilitiesArr.includes(userLower)) {
         //if the guess isn't in the array, don't even count it -- considers uppercase to be lowercase
             for (i = 0; i < currentArr.length; i++){
-                if (userChoice.toLowerCase() === currentArr[i]){
+                if (userLower === currentArr[i]){
                 //if the chosen letter matches one of the letters in the word --
-                    blankWord[i] = userChoice.toLowerCase();
+                    blankWord[i] = userLower;
                     //display that letter in the vizualization of the word
                 }   
             }
-            if (currentArr.indexOf(userChoice.toLowerCase()) === -1){
+            if (currentArr.indexOf(userLower) === -1){
             guesses -= 1;
             }
             //if the letter is not in the word, decrement guesses
@@ -90,11 +91,11 @@ function playGame(){
                 wins++;
                 playGame();
                 if (losses > wins){
-                    document.getElementById('round-status').innerHTML = "Currently losing";
+                    document.getElementById('round-status').innerHTML = "Losing";
                 } else if (losses === wins){
-                    document.getElementById('round-status').innerHTML = "Currently tied";
+                    document.getElementById('round-status').innerHTML = "Tied";
                 } else {
-                    document.getElementById('round-status').innerHTML = "Currently winning";
+                    document.getElementById('round-status').innerHTML = "Winning";
                 }
             }
             //if all letters have been guessed
@@ -104,16 +105,15 @@ function playGame(){
                 losses++;
                 playGame();
                 if (losses > wins){
-                    document.getElementById('round-status').innerHTML = "Currently losing";
+                    document.getElementById('round-status').innerHTML = "Losing";
                 } else if (losses === wins){
-                    document.getElementById('round-status').innerHTML = "Currently tied";
+                    document.getElementById('round-status').innerHTML = "Tied";
                 } else {
-                    document.getElementById('round-status').innerHTML = "Currently winning";
+                    document.getElementById('round-status').innerHTML = "Winning";
                 }
             }
             //if guesses counter is zero and all letters haven't been guessed
-                //display a loss, add it to loss counter
-            
+                //display a loss, add it to loss counter           
         }
 
         if (guesses === 0 || winsBool){ 
@@ -127,7 +127,6 @@ function playGame(){
         document.getElementById('output2').innerHTML = guesses;
         document.getElementById('hangmanLetters').innerHTML = blankWord.toString().replace(/,/g , " ");
         document.getElementById('wins-count').innerHTML = wins;
-        document.getElementById('losses-count').innerHTML = losses;
-        
+        document.getElementById('losses-count').innerHTML = losses;      
     }
 }
