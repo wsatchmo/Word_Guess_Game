@@ -32,6 +32,7 @@ function clearScore(){
     document.getElementById('losses-count').innerHTML = losses;
 }
 
+//!!!!!!DANGER ZONE!!!!!!//
 function playGame(){
 
     document.getElementById('output1').innerHTML = "";
@@ -117,7 +118,7 @@ function playGame(){
         }
 
         if (guesses === 0 || winsBool){ 
-           document.getElementById('pressanykey').innerHTML = "Press any key to begin again"; 
+           document.getElementById('pressanykey').innerHTML = "Press any key to begin"; 
         } else {
             document.getElementById('pressanykey').innerHTML = "";
         }
