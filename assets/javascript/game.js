@@ -8,23 +8,28 @@
                     __/ |                      
                    |___/                       
 */
+var themeSong = document.getElementById('theme');
 function toggleMusic(){ //the music player
-        if (document.getElementById('theme').paused == false)
-            document.getElementById('theme').pause(); //if it is not paused, pause it when pressed
+        if (themeSong.paused == false)
+            themeSong.pause(); //if it is not paused, pause it when pressed
         else
-            document.getElementById('theme').play(); //otherwise, play it
+            themeSong.play(); //otherwise, play it
+            themeSong.loop = true; //and loop
+            themeSong.volume = 0.45;
                  }
 // FALLOUT 4 CHIPTUNE SONG!!!
-
 var wins = 0;
 var losses = 0;
 //create a score counter
-var wordArr = ["britain", "raider", "psycho", "vault", "horse", "chuckle", "fluffy", "drink", "italian", "monkey", "china", "america", "puppy", "cheese", "tacos", "duck", "donkey", "wrench", "boxer", "russia"];
+var wordArr = ["robot", "laser", "fatman", "grenade", "radiation", "raider", "psycho", "vault", "baseball", "alien", "wanderer", "father", "guns",
+"handy", "drink", "mutant", "atoms", "china", "america", "water", "melee", "knife", "armor", "railroad", "brotherhood", "pugilist", "russia"];
 //make an array of a ton of words
 
 function clearScore(){
     wins = 0;
     losses = 0;
+    document.getElementById('wins-count').innerHTML = wins;
+    document.getElementById('losses-count').innerHTML = losses;
 }
 
 function playGame(){
@@ -53,7 +58,8 @@ function playGame(){
         var userChoice = event.key;
         guessedLetters.push(userChoice.toLowerCase());
 
-        var possibilitiesArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        var possibilitiesArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", 
+                                "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         //an array of all possible guesses
         if (possibilitiesArr.includes(userChoice.toLowerCase())) {
         //if the guess isn't in the array, don't even count it -- considers uppercase to be lowercase
@@ -70,7 +76,7 @@ function playGame(){
             //if the letter is not in the word, decrement guesses
 
             var winsBool;
-
+            //a boolean to track if the round has been won or lost yet
             for (j = 0; j < blankWord.length; j++){
                 if (blankWord[j] === currentArr[j]){
                     winsBool = true;
@@ -105,17 +111,17 @@ function playGame(){
                     document.getElementById('round-status').innerHTML = "Currently winning";
                 }
             }
-        //if guesses counter is zero and all letters haven't been guessed
-            //display a loss, add it to loss counter
+            //if guesses counter is zero and all letters haven't been guessed
+                //display a loss, add it to loss counter
             
         }
 
-        if (guesses === 0 || winsBool){
+        if (guesses === 0 || winsBool){ 
            document.getElementById('pressanykey').innerHTML = "Press any key to begin again"; 
         } else {
             document.getElementById('pressanykey').innerHTML = "";
         }
-        
+        //after the round, says press any key to begin again
 
         document.getElementById('output1').innerHTML = guessedLetters.toString().replace(/,/g , " ");
         document.getElementById('output2').innerHTML = guesses;

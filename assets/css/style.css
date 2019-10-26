@@ -7,7 +7,7 @@ body{
 p{
     color: rgb(3, 184, 3);
     font-family: monospace;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .game-box{
@@ -15,21 +15,14 @@ p{
     margin-top: 10%;
 }
 
-@media only screen and (max-width: 600px) {
-  .game-box {
-    margin-left: 1%;
-    margin-top: 2%;
-  }
-}
-
 #startGame{
     font-family: monospace;
     background-color: rgb(3, 184, 3);
     color: black;
-    font-size: 20px;
+    font-size: 16px;
     border-color: rgb(3, 184, 3) rgb(3, 184, 3) rgb(9, 100, 9) rgb(33, 95, 33);
-    margin: 30px;
-    margin-left: 10%;
+    margin: 20px;
+    margin-left: 5%;
 }
 
 #startGame:hover {
@@ -41,9 +34,10 @@ p{
     font-family: monospace;
     background-color: rgb(3, 184, 3);
     color: black;
-    font-size: 20px;
+    font-size: 16px;
     border-color: rgb(3, 184, 3) rgb(3, 184, 3) rgb(9, 100, 9) rgb(33, 95, 33);
-    margin: 30px;
+    margin: 20px;
+    margin-left: 25%;
 }
 
 #music:hover {
@@ -54,11 +48,25 @@ p{
 .guess-text{
     float: left;
     padding: 30px;
-    width: 25%;
+    width: 30%;
 }
 
 .hangman-text{
     float: left;
     padding: 30px;
     margin-left: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+  .game-box {
+    margin-left: 1%;
+    margin-top: 2%;
+  }
+  #music{
+    margin-left: 20px;  
+  }
+  .guess-text{
+    padding: 10px;
+    width: 150px;  
+  }
 }

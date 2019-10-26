@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Fallout Hangman</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
 </head>
 
@@ -14,8 +14,8 @@
     <div class="game-box">
         <div class="button-div">
             <audio id="theme" src="assets/music/Fallout 4 Theme 8 Bit - Famitracker.mp3"></audio>
-            <input id="startGame" type="button" value="Start Game" onclick="playGame();clearScore();">
-            <input id="music" type="button"  value="Toggle Music" onclick="toggleMusic();">
+            <input id="startGame" type="button" value="New Game" onclick="playGame();clearScore();">
+            <input id="music" type="button"  value="Play/Pause Music" onclick="toggleMusic();">
             
         </div>
         <div class="game-text">
@@ -24,13 +24,13 @@
                 <p id="output1"> </p>
                 <br>
                 <p>Guesses Remaining:</p>
-                <p id="output2"> = = = = = = = </p>
+                <p id="output2"> = = = = = =</p>
                 <p>Player Status:</p>
                 <p id="round-status"> </p>
             </div>
             <div class="hangman-text">
                 <p>HANGMAN:</p>
-                <p id="hangmanLetters"> = = = = = = = </p>
+                <p id="hangmanLetters"> = = = = = =</p>
                 <p>Wins:</p>
                 <p id="wins-count"> 0 </p>
                 <p>Losses:</p>
